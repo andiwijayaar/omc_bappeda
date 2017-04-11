@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+     
+<hibernate-mapping>     
+    <sql-query name="SQL_GET_ALL_USER_PAGING">
+    	<return alias="user" class="com.omcbappeda.sumsel.model.User" />
+        <![CDATA[select * from OMC_users WHERE approval = ? AND is_active = ? order by user_name asc LIMIT ? OFFSET ?]]>
+    </sql-query>     
+    <sql-query name="SQL_GET_USER_BY_NAME_PAGING">
+    	<return alias="user" class="com.omcbappeda.sumsel.model.User" />
+        <![CDATA[select * from OMC_users where approval = ? AND is_active = ? and full_name like ? order by full_name asc LIMIT ? OFFSET ?]]>
+    </sql-query>     
+    <sql-query name="SQL_COUNT_USERS">
+        <![CDATA[select count(id) from OMC_users where approval = ? and is_active = ?]]>
+    </sql-query>     
+    <sql-query name="SQL_COUNT_USER_BY_NAME">
+        <![CDATA[select count(id) from OMC_users where is_active = ? and approval = ? and full_name like ?]]>
+    </sql-query>
+</hibernate-mapping>

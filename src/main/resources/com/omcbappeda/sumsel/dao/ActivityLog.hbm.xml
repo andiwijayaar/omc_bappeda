@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.omcbappeda.sumsel.model.ActivityLog" table="OMC_histories">
+		<id name="id" type="java.lang.String">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		
+		<property name="ipAddress" type="java.lang.String">
+            <column name="ip_address" />
+        </property>
+        
+        <property name="userAgent" type="java.lang.String">
+            <column name="user_agent" />
+        </property>
+        
+		<property name="activity" type="java.lang.String">
+            <column name="activity" />
+        </property>
+        
+        <many-to-one name="createdBy" class="com.omcbappeda.sumsel.model.User" fetch="select">
+            <column name="created_by" />
+        </many-to-one>
+        
+        <property name="createdDate" type="java.util.Date">
+            <column name="created_date" />
+        </property>
+	</class>
+</hibernate-mapping>

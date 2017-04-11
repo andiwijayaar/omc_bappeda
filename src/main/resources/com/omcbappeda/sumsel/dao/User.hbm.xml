@@ -1,0 +1,69 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.omcbappeda.sumsel.model.User" table="OMC_users">
+		<id name="id" type="java.lang.String">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		
+		<property name="userId" type="java.lang.String">
+            <column name="user_name" />
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="full_name" />
+        </property>
+        
+        <property name="gender" type="java.lang.String">
+            <column name="jenis_kelamin" />
+        </property>
+        
+         <property name="email" type="java.lang.String">
+            <column name="email" />
+        </property>
+        
+        <property name="phone" type="java.lang.String">
+            <column name="no_hp" />
+        </property>
+        
+        <property name="jabatan" type="java.lang.String">
+            <column name="jabatan" />
+        </property>
+        
+         <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+        
+        <many-to-one name="departement" class="com.omcbappeda.sumsel.model.Departement" fetch="select">
+            <column name="dept_code" />
+        </many-to-one>
+        
+        <property name="isAdmin" type="java.lang.String">
+            <column name="is_admin" />
+        </property>
+        
+        <property name="isActive" type="java.lang.String">
+            <column name="is_active" />
+        </property>
+        
+        <property name="approveBy" type="java.lang.String">
+            <column name="approve_by" />
+        </property>
+        
+        <property name="approveDate" type="java.util.Date">
+            <column name="approve_date" />
+        </property>
+        
+        <property name="approval" type="java.lang.String">
+            <column name="approval" />
+        </property>
+        
+         <property name="createdDate" type="java.util.Date">
+            <column name="created_date" />
+        </property>
+        
+	</class>
+</hibernate-mapping>

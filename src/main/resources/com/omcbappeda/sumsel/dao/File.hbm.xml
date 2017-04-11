@@ -1,0 +1,41 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.omcbappeda.sumsel.model.File" table="OMC_files">
+		<id name="id" type="java.lang.String">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		
+		<property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        
+        <property name="path" type="java.lang.String">
+            <column name="path" />
+        </property>
+        
+        <many-to-one name="directory" class="com.omcbappeda.sumsel.model.Directory" fetch="select">
+            <column name="directory_id" />
+        </many-to-one>
+        
+        <property name="extension" type="java.lang.String">
+            <column name="extension" />
+        </property>
+        
+        <many-to-one name="createdBy"  class="com.omcbappeda.sumsel.model.User" fetch="select">
+            <column name="created_by" />
+        </many-to-one>
+        
+        <property name="createdDate" type="java.util.Date">
+            <column name="created_date" />
+        </property>
+        
+        <property name="isActive" type="java.lang.String">
+            <column name="is_active" />
+        </property>
+        
+	</class>
+</hibernate-mapping>

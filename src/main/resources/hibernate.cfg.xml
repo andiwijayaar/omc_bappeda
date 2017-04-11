@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- Database connection settings -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://182.253.195.115:3306/omc_bappeda?autoReconnect=true</property>
+		<property name="connection.username">bappeda</property>
+		<property name="connection.password">k0p1susu123</property>
+
+		<!-- <property name="hibernate.cache.use_second_level_cache">false</property>
+		<property name="hibernate.cache.use_query_cache">false</property> -->
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">false</property>
+		<!-- <property name="format_sql">true</property> <property name="use_sql_comments">true</property> -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<!-- <property name="hbm2ddl.auto">update</property> -->
+
+		<property name="default_batch_fetch_size">4</property>
+
+		<property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>
+		<property name="connection.is-connection-validation-required">true</property>
+
+		<!-- Names the annotated entity class -->
+		<mapping resource="com/omcbappeda/sumsel/dao/Departement.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/dao/User.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/dao/ActivityLog.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/dao/Directory.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/dao/File.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/query/user-queries.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/query/departemen-queries.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/query/file-queries.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/query/directory-queries.hbm.xml" />
+		<mapping resource="com/omcbappeda/sumsel/query/activity-log-queries.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

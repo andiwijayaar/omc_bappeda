@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+     
+<hibernate-mapping>     
+    <sql-query name="SQL_GET_DIRECTORY_BY_PARENT">
+    	<return alias="directory" class="com.omcbappeda.sumsel.model.Directory" />
+        <![CDATA[select * from OMC_directories where parent = ? and is_active = ? order by name asc]]>
+    </sql-query>     
+    <sql-query name="SQL_GET_DIRECTORY_BY_NAME">
+    	<return alias="directory" class="com.omcbappeda.sumsel.model.Directory" />
+        <![CDATA[select * from OMC_directories where name like ? and is_active = ? order by name]]>
+    </sql-query>
+</hibernate-mapping>

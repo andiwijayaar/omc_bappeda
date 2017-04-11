@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+     
+<hibernate-mapping>     
+    <sql-query name="SQL_GET_FILE_BY_DIRECTORY">
+    	<return alias="file" class="com.omcbappeda.sumsel.model.File" />
+        <![CDATA[select * from OMC_files where directory_id = ? and is_active = ? order by name asc]]>
+    </sql-query>     
+    <sql-query name="SQL_GET_FILE_BY_NAME">
+    	<return alias="file" class="com.omcbappeda.sumsel.model.File" />
+        <![CDATA[select * from OMC_files where name like ? or extension like ? and is_active = ? order by name asc]]>
+    </sql-query>
+</hibernate-mapping>

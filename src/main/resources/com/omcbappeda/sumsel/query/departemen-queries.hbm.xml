@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+     
+<hibernate-mapping>     
+    <sql-query name="SQL_GET_ALL_DEPARTEMENT_PAGING">
+    	<return alias="departement" class="com.omcbappeda.sumsel.model.Departement" />
+        <![CDATA[select * from OMC_departements where is_active = ? order by name asc LIMIT ? OFFSET ?]]>
+    </sql-query>     
+    <sql-query name="SQL_GET_DEPARTEMENT_BY_NAME_PAGING">
+    	<return alias="departement" class="com.omcbappeda.sumsel.model.Departement" />
+        <![CDATA[select * from OMC_departements where (name like ? or code like ?) and is_active = ? order by name asc LIMIT ? OFFSET ?]]>
+    </sql-query>     
+    <sql-query name="SQL_COUNT_DEPARTEMENT">
+        <![CDATA[select count(code) from OMC_departements where is_active = ?]]>
+    </sql-query>      
+    <sql-query name="SQL_COUNT_DEPARTEMENT_BY_NAME">
+        <![CDATA[select count(code) from OMC_departements where is_active = ? and (name like ? or code like ?)]]>
+    </sql-query> 
+</hibernate-mapping>

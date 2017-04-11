@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+     
+<hibernate-mapping>     
+    <sql-query name="SQL_GET_ACTIVITY_LOG_PAGING">
+    	<return alias="departement" class="com.omcbappeda.sumsel.model.ActivityLog" />
+        <![CDATA[	select h.* 
+        			from OMC_histories h left join OMC_users u on u.id = h.created_by
+        			where u.is_admin = ?
+        			order by h.created_date 
+        			DESC LIMIT ? OFFSET ?]]>
+    </sql-query>      
+    <sql-query name="SQL_COUNT_ACTIVITY_LOG">
+        <![CDATA[	select count(h.id) 
+        			from OMC_histories h left join OMC_users u on u.id = h.created_by
+        			where u.is_admin = ?]]>
+    </sql-query>
+    <sql-query name="SQL_GET_ACTIVITY_LOG_BY_DATE_PAGING">
+    	<return alias="departement" class="com.omcbappeda.sumsel.model.ActivityLog" />
+        <![CDATA[	select h.* 
+        			from OMC_histories h left join OMC_users u on u.id = h.created_by
+       				where h.created_date >= ? and h.created_date <= ?
+       				and u.id != ? 
+        			order by h.created_date 
+       				DESC LIMIT ? OFFSET ?]]>        
+    </sql-query> 
+    <sql-query name="SQL_COUNT_ACTIVITY_LOG_BY_DATE">
+        <![CDATA[	select count(h.id) 
+        			from OMC_histories h left join OMC_users u on u.id = h.created_by
+       				where h.created_date >= ? and h.created_date <= ?
+       				and u.id != ?]]>
+    </sql-query>     
+    <sql-query name="SQL_GET_USER_ACTIVITY_LOG_PAGING">
+    	<return alias="departement" class="com.omcbappeda.sumsel.model.ActivityLog" />
+        <![CDATA[	select * 
+        			from OMC_histories
+        			where created_by = ? and created_date >= ? and created_date <= ?
+        			order by created_date 
+        			DESC LIMIT ? OFFSET ?]]>
+    </sql-query><sql-query name="SQL_COUNT_ACTIVITY_LOG_USER">
+        <![CDATA[	select count(id) 
+        			from OMC_histories
+        			where created_by = ? and created_date >= ? and created_date <= ?]]>
+    </sql-query>
+</hibernate-mapping>
